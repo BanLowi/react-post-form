@@ -1,4 +1,7 @@
 import { useState } from "react"
+import axios from "axios";
+
+const postURL = "https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts";
 
 function App() {
 
@@ -12,8 +15,20 @@ function App() {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
-    });
 
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    axios.post(postURL, formData, {
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(response => {
+        console.log(response);
+
+      })
   }
 
 
@@ -26,7 +41,7 @@ function App() {
 
         <div className="container">
 
-          <form>
+          <form onSubmit={handleSubmit}>
 
             <div className="mb-3">
               <input
@@ -54,7 +69,7 @@ function App() {
               />
             </div>
 
-
+            <button type="submit">Invia</button>
 
           </form>
 
