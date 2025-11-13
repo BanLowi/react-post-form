@@ -7,14 +7,20 @@ function App() {
 
   const [formData, setFormData] = useState({
     title: "",
-    author: ""
+    author: "",
+    body: "",
+    public: false
   });
+  console.log(formData.public);
+
 
   function handleData(e) {
+    // controllo se il target è una checkbox
+    const value = target.type === 'checkbox' ? target.checked : target.value;
 
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: value
 
     });
   }
@@ -77,10 +83,14 @@ function App() {
             </label> */}
 
             <div className="mb-3">
-              <label for="formTextArea" className="form-label">Write Here:</label>
+              <label htmlFor="formTextArea" className="form-label">Write Here:</label>
               <textarea className="form-control" name="body" id="formTextArea" rows="3" value={formData.body} onChange={handleData}></textarea>
             </div>
 
+            <div className="form-check">
+              <input className="form-check-input" type="checkbox" value={formData.public} onChange={handleData} id="formCheckbox" />
+              <label className="form-check-label" htmlFor="formCheckbox"> Public </label>
+            </div>
 
             <button type="submit">Invia</button>
 
