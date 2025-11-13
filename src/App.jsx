@@ -7,6 +7,15 @@ function App() {
     lastname: ""
   });
 
+  function handleData(e) {
+
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+
+  }
+
 
   return (
     <>
@@ -19,25 +28,29 @@ function App() {
 
           <form>
 
-            <div class="mb-3">
+            <div className="mb-3">
               <input
                 type="text"
                 className="form-control"
-                name=""
+                name="firstname"
                 id=""
                 aria-describedby="helpId"
                 placeholder="First Name"
+                onChange={handleData}
+                value={formData.firstname}
               />
             </div>
 
-            <div class="mb-3">
+            <div className="mb-3">
               <input
                 type="text"
                 className="form-control"
-                name=""
+                name="lastname"
                 id=""
                 aria-describedby="helpId"
                 placeholder="Last Name"
+                onChange={handleData}
+                value={formData.lastname}
               />
             </div>
 
