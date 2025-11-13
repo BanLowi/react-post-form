@@ -13,15 +13,13 @@ function App() {
   });
   console.log(formData.public);
 
-
   function handleData(e) {
     // controllo se il target è una checkbox
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
 
     setFormData({
       ...formData,
       [e.target.name]: value
-
     });
   }
 
@@ -88,7 +86,7 @@ function App() {
             </div>
 
             <div className="form-check">
-              <input className="form-check-input" type="checkbox" value={formData.public} onChange={handleData} id="formCheckbox" />
+              <input className="form-check-input" type="checkbox" checked={formData.public} onChange={handleData} name="public" id="formCheckbox" />
               <label className="form-check-label" htmlFor="formCheckbox"> Public </label>
             </div>
 
