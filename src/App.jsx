@@ -6,8 +6,8 @@ const postURL = "https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts";
 function App() {
 
   const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: ""
+    title: "",
+    author: ""
   });
 
   function handleData(e) {
@@ -47,12 +47,12 @@ function App() {
               <input
                 type="text"
                 className="form-control"
-                name="firstname"
-                id=""
+                name="title"
+                id="formTitleInput"
                 aria-describedby="helpId"
-                placeholder="First Name"
+                placeholder="Title"
                 onChange={handleData}
-                value={formData.firstname}
+                value={formData.title}
               />
             </div>
 
@@ -60,14 +60,27 @@ function App() {
               <input
                 type="text"
                 className="form-control"
-                name="lastname"
-                id=""
+                name="author"
+                id="formAuthorInput"
                 aria-describedby="helpId"
-                placeholder="Last Name"
+                placeholder="Author"
                 onChange={handleData}
-                value={formData.lastname}
+                value={formData.author}
               />
             </div>
+
+            {/*             <label>Write here:
+              <textarea
+                value={formData.body}
+                onChange={handleData}
+              />
+            </label> */}
+
+            <div className="mb-3">
+              <label for="formTextArea" className="form-label">Write Here:</label>
+              <textarea className="form-control" name="body" id="formTextArea" rows="3" value={formData.body} onChange={handleData}></textarea>
+            </div>
+
 
             <button type="submit">Invia</button>
 
